@@ -30,4 +30,4 @@
 
 #### Quanti sono gli insegnanti che non hanno un numero di telefono?
 
-- SELECT COUNT(`phone` = 'NULL') FROM `teachers`;
+- SELECT count(*) FROM `teachers` WHERE `phone` is null;
