@@ -115,12 +115,11 @@ SELECT `students`.`id`,
 `students`.`registration_number` AS `student_registration_number`,
 `courses`.`id`,
 `courses`.`name`,
-COUNT(`exam_student`.`exam_id`) AS `try`,
+COUNT(CASE WHEN `exam_student`.`vote` >= 18 THEN `exam_student`.`exam_id` END) AS `try`,
 MAX(`exam_student`.`vote`) AS `max_vote`
 FROM `students`
 JOIN `exam_student` ON `students`.`id` = `exam_student`.`student_id`
 JOIN `exams` ON `exams`.`id` = `exam_student`.`exam_id`
 JOIN `courses` ON `courses`.`id` = `exams`.`course_id`
-WHERE `exam_student`.`vote` >= 18
 GROUP BY `students`.`id`,`courses`.`id`;
 ```
