@@ -10,7 +10,9 @@ GROUP BY YEAR(`students`.`enrolment_date`);
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 ```sql
-
+SELECT `teachers`.`office_address`, COUNT(*)
+FROM `teachers`
+GROUP BY `teachers`.`office_address`;
 ```
 
 3. Calcolare la media dei voti di ogni appello d'esame
